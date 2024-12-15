@@ -1,3 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* @layer base {
+  :root {
+    --radius: 0.5rem
+  }
+} */
+
+.colorful-bg{
+  /* background-color: antiquewhite; */
+  background: linear-gradient(
+    to right, /* Direction of the gradient */
+    rgb(102, 178, 255), /* Start color: Blue */
+    /* rgb(225, 91, 105) End color: Pink */
+    rgb(222, 104, 115) /* End color: Pink */
+  );
+  background-size: 200% 200%; 
+  animation: gradient-animation 10s infinite; /* Controls transition timing */
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%; /* Start from the top left */
+  }
+  100% {
+    background-position: 100% 50%; /* End at the right edge */
+  }
+}
+
+.container {
+  max-width: calc(100% - 50px);
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-left: auto;
+  margin-right: auto;
+}
+

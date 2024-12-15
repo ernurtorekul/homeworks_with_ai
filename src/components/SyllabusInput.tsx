@@ -14,7 +14,7 @@ const SyllabusInput: React.FC = () => {
     const cleanTopics = topics.split("\n").filter((topic) => topic.trim() !== "");
   
     try {
-      const response = await fetch("http://localhost:3002/api/generateTasks", {
+      const response = await fetch("http://localhost:3000/api/generateTasks", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
