@@ -19,39 +19,39 @@ const Header = () => {
                 className="hover:underline"
                 // onClick={() => handleNavigation("/", "#countries")}
               >
-                Главная
+                Main
               </a>
               <a
                 href="#services"
                 className="hover:underline"
                 // onClick={() => handleNavigation("/", "#services")}
               >
-                О нас
+                About us
               </a>
               <a
                 href="#services"
                 className="hover:underline"
                 // onClick={() => handleNavigation("/", "#services")}
               >
-                Цена
+                Price
               </a>
               <a
                 href="#services"
                 className="hover:underline"
                 // onClick={() => handleNavigation("/", "#services")}
               >
-                Отзывы
+                Feedback
               </a>
               <a
                 href="#footer"
                 className="hover:underline"
                 // onClick={() => handleNavigation("/", "#footer")}
               >
-                Свяжитесь с нами
+                Contact us
               </a>
               <div className="flex space-x-1 justify-end items-center">
-                <Button variant='secondary'>Зарегистрироваться</Button>
-                <Button>Войти</Button>
+                <Button variant='secondary'>Sign up</Button>
+                <Button>Sign in</Button>
               </div>
             </div>
           </div>

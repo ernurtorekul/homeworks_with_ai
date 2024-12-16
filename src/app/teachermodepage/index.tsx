@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
@@ -15,7 +16,45 @@ import Accordion from "@/components/ui/accordion";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 
+import { useState } from "react";
+
 function TeacherMode() {
+  const [topics, setTopics] = useState<string[]>([]);
+  const [result, setResult] = useState<string>("");
+
+  // Function to handle the API call
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const cleanedTopics = topics
+    .map((t) => t.trim())  // Remove leading/trailing spaces
+    .filter((t) => t !== ""); 
+
+  if (cleanedTopics.length === 0) {
+    setResult("enter valid data");
+    return;
+  }
+
+  try {
+    const response = await fetch("/api/generateTasks", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ topics: cleanedTopics }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      setResult(data.tasks?.join("\n") || "No tasks");
+    } else {
+      setResult("Error generating tasks");
+    }
+  } catch (error) {
+    setResult("Failed to connect to the server");
+  }
+};
+
   return (
     <div className="bg-custom-primary2 w-full h-fit">
       <Header />
@@ -60,7 +99,7 @@ function TeacherMode() {
               <div className="flex flex-col items-center space-y-4">
                 <div className="grid w-full bg-custom-primary text-white p-4 rounded-xl space-y-2 ">
                   <p>Your task</p>
-                  <Textarea placeholder="Type your message here." />
+                  <Textarea placeholder="Type your message here." onChange={(e) => setTopics(e.target.value.split("\n").map((t) => t.trim()))}/>
                 </div>
 
                 <div className="grid w-full bg-custom-primary text-white p-4 rounded-xl">
@@ -94,7 +133,7 @@ function TeacherMode() {
                   />
                 </div>
 
-                <Button size={"lg"} variant={"pink"}>
+                <Button size={"lg"} variant={"pink"} onClick={handleSubmit}>
                   Send message
                 </Button>
               </div>
@@ -110,21 +149,26 @@ function TeacherMode() {
                     copy
                   </Button>
                 </div>
-                <Textarea placeholder="Type your message here." className="h-36" disabled />
+                <Textarea
+                  placeholder="your result"
+                  value={result}
+                  className="h-36"
+                  disabled
+                />
               </div>
               <div className="flex flex-col bg-custom-primary text-white p-4 rounded-xl w-full space-y-2">
                 <div className="flex justify-between">
-                  <p>Answer</p>
+                  <p>Explanation</p>
                   <Button variant={"pink"} size={"sm"}>
                     copy
                   </Button>
                 </div>
-                <Textarea placeholder="Type your message here."  disabled />
+                <Textarea placeholder="Type your message here." disabled />
               </div>
               <div className="flex flex-col items-center space-y-4">
                 <div className="grid w-full bg-custom-primary text-white p-4 rounded-xl space-y-2 ">
                   <div className="flex justify-between">
-                    <p>Answer</p>
+                    <p>Steps</p>
                     <Button variant={"pink"} size={"sm"}>
                       copy
                     </Button>
