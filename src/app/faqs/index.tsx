@@ -43,7 +43,7 @@ function Faqs() {
           {data.map((item) => (
             <div
               key={item.id}
-              className="grid w-full bg-custom-primary text-2xl text-white p-4 rounded-xl my-2 border-b border-gray-300"
+              className="grid w-full bg-custom-primary text-2xl text-white p-4 rounded-xl my-2 border-b border-custom-pink"
             >
               <Accordion title={item.question} description={item.answer} />
             </div>

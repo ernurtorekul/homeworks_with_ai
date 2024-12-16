@@ -10,7 +10,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-custom-primary rounded text-zinc-50 hover:bg-zinc-900/90 dark:hover:bg-zinc-50/90",
+          "bg-custom-primary rounded text-zinc-50 hover:bg-custom-pink dark:hover:bg-zinc-50/90",
         small:
           "bg-custom-primary rounded text-zinc-50 hover:bg-zinc-900/90 dark:hover:bg-zinc-50/90",
         pink:

@@ -56,7 +56,7 @@ function Feedbacks() {
                       <div className="w-16 rounded-full overflow-hidden">
                         <Avatar >
                           <AvatarImage
-                            src="https://github.com/shadcn.png"
+                            src="https://easy-peasy.ai/cdn-cgi/image/quality=80,format=auto,width=700/https://fdczvxmwwjwpwbeeqcth.supabase.co/storage/v1/object/public/images/8f706226-0b67-41ea-b84e-a7add4ea0658/fadf9214-bad0-41cb-8318-272d81dfe466.png"
                             alt="@shadcn"
                           />
                         </Avatar>
